@@ -1,11 +1,11 @@
 import Counter from "./counter"
+import Card from "./card"
 
 export default function Page() {
   return (
-    <div>
-      <h1>Hello</h1>
-      <p>This is working</p>
-      <Counter />
+    <div className="flex items-center space-x-52">
+      <Card title='Fade To Black' artist='Metallica' album='Ride The Lightning'/>
+      <Card title='WaWa' artist='Cher' album='Believe'/>
     </div>
   )
 }
