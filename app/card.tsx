@@ -18,7 +18,7 @@ export default function Card({children, title, artist, album}: Props) {
     const [isLoading, setLoading] = useState(false)
 
     const BASE = 'https://ws.audioscrobbler.com/2.0' 
-    const API_KEY = '7e39465e34f1025fe80caec6557291c7'
+    const API_KEY = process.env.API_KEY
     const LINK = `${BASE}/?method=album.getinfo&api_key=${API_KEY}&artist=${artist}&album=${album}&format=json` 
     
     useEffect(() => {
@@ -26,7 +26,8 @@ export default function Card({children, title, artist, album}: Props) {
         fetch(LINK.replace(/ /g, "+"))
             .then((res) => res.json())
             .then((data) => {
-                if (data.album.image) {
+                console.log(API_KEY)
+                if (data.album) {
                     console.log(data)
                     setImage(data.album.image[5]['#text'])
                 } else {
